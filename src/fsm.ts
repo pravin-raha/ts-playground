@@ -16,4 +16,8 @@ export class FSM<S, I, O> {
     return new FSM(run)
   }
 
+  runS(state: S, input: I): S {
+    return this.run(state, input).k
+  }
+
 }

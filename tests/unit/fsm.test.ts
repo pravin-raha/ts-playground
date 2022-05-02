@@ -6,5 +6,12 @@ it('Traffic engine commands fsm', async () => {
 
   expect(res).toStrictEqual(Tuple.of(SwitchState.of({ state: 'red' }), 1))
 
-  return Promise.resolve(1)
+})
+
+
+it('Traffic engine commands fsm', async () => {
+  const res = TrafficEngine.fsm.runS(SwitchState.of({ state: 'yellow' }), { state: 'red' })
+
+  expect(res).toStrictEqual(SwitchState.of({ state: 'red' }))
+
 })
