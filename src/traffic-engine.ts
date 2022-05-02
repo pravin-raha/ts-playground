@@ -45,10 +45,19 @@ export class TrafficEngine {
     (state: SwitchState, input: SwitchCommand) => {
       switch (input.state) {
         case 'yellow':
+          if (state.state.state !== 'green') {
+            return Tuple.of(state, 1)
+          }
           return Tuple.of(SwitchState.of({ state: 'yellow' }), 1)
         case 'red':
+          if (state.state.state !== 'yellow') {
+            return Tuple.of(state, 1)
+          }
           return Tuple.of(SwitchState.of({ state: 'red' }), 1)
         case 'green':
+          if (state.state.state !== 'green') {
+            return Tuple.of(state, 1)
+          }
           return Tuple.of(SwitchState.of({ state: 'green' }), 1)
       }
     }
